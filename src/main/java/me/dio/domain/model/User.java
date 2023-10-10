@@ -6,19 +6,32 @@ import java.util.List;
 
 @Entity(name = "tb_user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @OneToOne(cascade = CascadeType.ALL)
-    private Account acount;
+    private Account account;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Card card;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -28,12 +41,12 @@ public class User {
         this.name = name;
     }
 
-    public Account getAcount() {
-        return acount;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAcount(Account acount) {
-        this.acount = acount;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Card getCard() {
